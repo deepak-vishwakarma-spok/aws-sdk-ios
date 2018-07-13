@@ -478,6 +478,7 @@ static const NSString *SDK_VERSION = @"2.6.19";
     
     //Invalidate the reconnect timer so that there are no reconnect attempts.
     [self.reconnectTimer invalidate];
+    self.reconnectTimer = nil;
     
     //Set the userDisconnect flag to true to indicate that the user has initiated the disconnect.
     self.userDidIssueDisconnect = YES;
@@ -495,6 +496,7 @@ static const NSString *SDK_VERSION = @"2.6.19";
 
 - (void)reconnectToSession {
     
+    [self.reconnectTimer invalidate];
     self.reconnectTimer = nil;
 
     //Check if the user has issued a disconnect. If so, don't retry.
