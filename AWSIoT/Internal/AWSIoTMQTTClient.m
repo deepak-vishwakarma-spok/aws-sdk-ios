@@ -501,6 +501,10 @@ static const NSString *SDK_VERSION = @"2.6.19";
     if (self.userDidIssueDisconnect  )  {
         return;
     }
+
+    if (self.mqttStatus == AWSIoTMQTTStatusConnected) {
+        return;
+    }
     
     AWSDDLogInfo(@"Attempting to reconnect.");
     
